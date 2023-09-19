@@ -11,13 +11,8 @@
 
 set $mod Mod4
 
-#no bip
-exec setterm -blength 0
-exec setterm -breq 0
-exec xset b off
-
 #executar polybar
-exec --no-startup-id ~/.config/polybar/./launch.sh --cuts
+exec --no-startup-id polybar example
 
 #executar nitrogen
 exec --no-startup-id nitrogen --restore
@@ -25,22 +20,21 @@ exec --no-startup-id nitrogen --restore
 #executar picom
 exec picom
 
-bindsym $mod+b exec firefox
+bindsym $mod+b exec brave
 
 #border workspace
-client.focused #FF33FF #46004D #FFFFFF #990099 #4D004D
-client.unfocused #6A6A68 #40403F #FFFFFF #CDCDCB #4D4D4C
+client.unfocused #FF33FF #46004D #FFFFFF #990099 #4D004D
+client.focused #6A6A68 #40403F #FFFFFF #CDCDCB #4D4D4C
 
 #hide window title
 default_border pixel 4
 default_floating_border pixel 4
 
-# Screen brightness controls, need brightnessctl installed
-bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xrandr --output eDP --brightness 1
+bindsym XF86MonBrightnessDown exec xrandr --output eDP --brightness 0.5
 
-#restore light
-exec brightnessctl -r
+exec xrandr --output eDP --brightness 0.65
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
