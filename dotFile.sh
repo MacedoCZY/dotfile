@@ -352,4 +352,4 @@ if [ ! -d /home/$user/.config/alacritty ]; then
     mkdir -p /home/$user/.config/alacritty;
 fi
 
-mv ./dotfile/alacritty/alacritty.yml /home/$user/.config/alacritty
+mv ./dotfile/alacritty/alacritty.yml /home/$user/.config/alacritty/alacritty.toml
