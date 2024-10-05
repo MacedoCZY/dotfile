@@ -7,11 +7,11 @@ printf '\n%s\n\n' 'Write your user name: '
 
 read -r user
 
-if [! -d /home/$user/.config ]; then
+if [ ! -d /home/$user/.config ]; then
   mkdir -p /home/$user/.config;
 fi
 
-if [! -d /home/$user/.config/i3 ]; then
+if [ ! -d /home/$user/.config/i3 ]; then
     mkdir -p /home/$user/.config/i3;
 fi
 
@@ -250,9 +250,11 @@ bindsym $mod+r mode "resize"
 #}
 EOF
 
-git clone https://github.com/adi1090x/polybar-themes.git && chmod +x ./polybar-themes/setup.sh && ../polybar-themes/setup.sh
+git clone https://github.com/adi1090x/polybar-themes.git && chmod +x ./polybar-themes/setup.sh && cd./polybar-themes && ./setup.sh
 
-if [! -d /home/$user/.config/nvim ]; then
+cd ..
+
+if [ ! -d /home/$user/.config/nvim ]; then
     mkdir -p /home/$user/.config/nvim;
 fi
 
