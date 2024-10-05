@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git -y && clear
+sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacrity -y && clear
 
 getent passwd 1000
 
@@ -254,6 +254,9 @@ git clone https://github.com/adi1090x/polybar-themes.git && chmod +x ./polybar-t
 
 cd ..
 
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 if [ ! -d /home/$user/.config/nvim ]; then
     mkdir -p /home/$user/.config/nvim;
 fi
@@ -340,4 +343,3 @@ let g:indentguides_spacechar = '▏'
 let g:indentguides_tabchar = '▏'
 " Fim das configurações do Vim IndentGuides
 EOF
-
