@@ -250,7 +250,11 @@ bindsym $mod+r mode "resize"
 #}
 EOF
 
-git clone https://github.com/adi1090x/polybar-themes.git && chmod +x ./polybar-themes/setup.sh && cd ./polybar-themes && ./setup.sh
+if [ ! -d ./polybar-themes ]; then
+    git clone https://github.com/adi1090x/polybar-themes.git
+fi
+
+chmod +x ./polybar-themes/setup.sh && cd ./polybar-themes && ./setup.sh
 
 cd ..
 
