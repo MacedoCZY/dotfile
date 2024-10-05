@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacrity -y && clear
+sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacritty -y && clear
 
 getent passwd 1000
 
