@@ -1,18 +1,12 @@
 #!/bin/bash
 sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacritty -y && clear
 
-getent passwd 1000
-
-printf '\n%s\n\n' 'Write your user name: '
-
-read -r user
-
-if [ ! -d /home/$user/.config ]; then
-  mkdir -p /home/$user/.config;
+if [ ! -d ~/.config ]; then
+  mkdir -p ~/.config;
 fi
 
-if [ ! -d /home/$user/.config/i3 ]; then
-    mkdir -p /home/$user/.config/i3;
+if [ ! -d ~/.config/i3 ]; then
+    mkdir -p ~/.config/i3;
 fi
 
 cat > /home/$user/.config/i3/config << EOF 
@@ -27,23 +21,19 @@ cat > /home/$user/.config/i3/config << EOF
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
-#no bip
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+
+#no bip  -----X-----
 exec setterm -blength 0
 exec setterm -breq 0
 exec xset b off
 
-#executar polybar - foi para baixo
+#executar polybar - foi para baixo -----X-----
 exec --no-startup-id ~/.config/polybar/launch.sh --cuts
-
-#executar nitrogen
-#exec --no-startup-id nitrogen --restore
-
-#executar picom
-#exec picom
-
-bindsym $mod+b exec firefox
 
 #border workspace
 client.focused #FF33FF #46004D #FFFFFF #990099 #4D004D
@@ -60,10 +50,6 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 #restore light
 exec brightnessctl -r
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -79,7 +65,6 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-#foi para baixo
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -89,7 +74,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status 
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -106,9 +91,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec rofi -show drun
-
+bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -120,6 +103,11 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+ccedilla focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+ISO_Level3_Shift focus left
+bindsym $mod+Super_R focus down
+bindsym $mod+Print focus up
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -207,7 +195,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really wan>
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -235,19 +223,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-#executar polybar
-#exec --no-startup-id sleep 2s;exec --no-startup-id ~/.config/polybar/launch.sh --cuts
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-#exec --no-startup-id nm-applet
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-#}
 EOF
 
 if [ ! -d ./polybar-themes ]; then
@@ -261,8 +236,8 @@ cd ..
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-if [ ! -d /home/$user/.config/nvim ]; then
-    mkdir -p /home/$user/.config/nvim;
+if [ ! -d ~/.config/nvim ]; then
+    mkdir -p ~/.config/nvim;
 fi
 
 cat > /home/$user/.config/nvim/init.vim << EOF
@@ -348,8 +323,8 @@ let g:indentguides_tabchar = '▏'
 " Fim das configurações do Vim IndentGuides
 EOF
 
-if [ ! -d /home/$user/.config/alacritty ]; then
-    mkdir -p /home/$user/.config/alacritty;
+if [ ! -d ~/.config/alacritty ]; then
+    mkdir -p ~/.config/alacritty;
 fi
 
-mv ./dotfile/alacritty/alacritty.yml /home/$user/.config/alacritty/alacritty.toml
+mv ./dotfile/alacritty/alacritty.yml ~/.config/alacritty/alacritty.toml
