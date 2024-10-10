@@ -517,4 +517,4 @@ echo -e "plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   fzf
-) >> ~/.zshrc
+)" >> ~/.zshrc
