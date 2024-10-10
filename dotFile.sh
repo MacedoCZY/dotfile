@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacritty picom snap -y && clear
+sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacritty picom snap wget zsh -y && clear
 
 sudo snap install brave
 
@@ -491,3 +491,25 @@ instance = "Alacritty"
 x = 6
 y = 6
 EOF
+
+if [ ! -d ~/.fonts ]; then
+    mkdir -p ~/.fonts;
+fi
+
+cd ~/.fonts
+
+wget -O MesloLGSRegular 'https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf'
+wget -O MesloLGSBold 'https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf'
+wget -O MesloLGSItalic 'https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf'
+wget -O MesloLGSBoldItalic 'https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf'
+
+cd ..
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+exec zsh
+
+
