@@ -1,4 +1,5 @@
 #!/bin/bash
+#if zsh dont run on terminal, exec zsh at line 1 on .bashrc
 sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacritty picom snap wget zsh rofi -y && clear
 
 sudo snap install brave
