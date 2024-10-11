@@ -96,7 +96,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 #bind open drun ----X----
-bindsym $mod+d exec drun
+bindsym $mod+d exec rofi -show drun
 
 #bind open brave ----X----
 bindsym $mod+b exec brave
