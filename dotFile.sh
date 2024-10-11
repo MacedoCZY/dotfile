@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacritty picom snap wget zsh -y && clear
+sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim  brightnessctl git alacritty picom snap wget zsh rofi -y && clear
 
 sudo snap install brave
 
@@ -94,6 +94,9 @@ bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+#bind open drun ----X----
+bindsym $mod+d exec drun
 
 #bind open brave ----X----
 bindsym $mod+b exec brave
