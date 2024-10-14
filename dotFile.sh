@@ -526,3 +526,5 @@ echo -e "plugins=(
   zsh-autosuggestions
   fzf
 )" >> ~/.zshrc
+
+rm -rf ~/'$ZSH_CUSTOM'
