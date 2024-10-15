@@ -527,4 +527,6 @@ echo -e "plugins=(
   fzf
 )" >> ~/.zshrc
 
+echo -e "exec zsh" >> ~/.bashrc
+
 rm -rf ~/'$ZSH_CUSTOM'
