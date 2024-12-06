@@ -1,8 +1,16 @@
 #!/bin/bash
 #if zsh dont run on terminal, exec zsh at line 1 on .bashrc
-sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim ranger brightnessctl git alacritty picom snap wget zsh rofi flameshot build-essential nodejs binutils -y && clear
+sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim ranger brightnessctl git alacritty picom snap wget zsh rofi flameshot build-essential nodejs binutils -y
 
 sudo snap install brave
+
+if [ ! -d ./polybar-themes ]; then
+    git clone https://github.com/adi1090x/polybar-themes.git
+fi
+
+chmod +x ./polybar-themes/setup.sh && cd ./polybar-themes && ./setup.sh
+
+cd ..
 
 if [ ! -d ~/.config ]; then
   mkdir -p ~/.config;
@@ -236,14 +244,6 @@ mode "resize" {
 
 bindsym \$mod+r mode "resize"
 EOF
-
-if [ ! -d ./polybar-themes ]; then
-    git clone https://github.com/adi1090x/polybar-themes.git
-fi
-
-chmod +x ./polybar-themes/setup.sh && cd ./polybar-themes && ./setup.sh
-
-cd ..
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
