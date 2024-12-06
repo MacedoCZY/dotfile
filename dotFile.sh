@@ -1,6 +1,6 @@
 #!/bin/bash
 #if zsh dont run on terminal, exec zsh at line 1 on .bashrc
-sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim ranger brightnessctl git alacritty picom snap wget zsh rofi flameshot build-essential nodejs binutils openjdk-21-jdk openjdk-21-jre -y && clear
+sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim ranger brightnessctl git alacritty picom snap wget zsh rofi flameshot build-essential nodejs binutils -y && clear
 
 sudo snap install brave
 
