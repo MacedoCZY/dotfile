@@ -1,1 +1,1 @@
-## run $sudo chmod +x dotFile.sh
+<h1 align="center"> Dotfile </h1>
