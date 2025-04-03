@@ -2,7 +2,7 @@
 #if zsh dont run on terminal, exec zsh at line 1 on .bashrc
 #in polybar, if nm-applet don't show icon, edit "tray-position = right", if this none, on config.ini
 #remember, to chose backgrounds in lightdm, edit the archive in /usr/share/lightdm/"any in".d
-sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim ranger brightnessctl git alacritty picom snap wget zsh rofi flameshot build-essential nodejs binutils lightdm -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt install i3-wm polybar neovim ranger brightnessctl git alacritty picom snap wget zsh rofi flameshot build-essential nodejs binutils lightdm power-profiles-daemon -y
 
 sudo snap install brave
 
