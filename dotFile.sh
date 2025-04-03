@@ -342,160 +342,296 @@ if [ ! -d ~/.config/alacritty ]; then
 fi
 
 cat > ~/.config/alacritty/alacritty.toml << EOF
-[colors]
-draw_bold_text_with_bright_colors = true
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
 
-[colors.bright]
-black = "#666666"
-blue = "#81a2be"
-cyan = "#54ced6"
-green = "#9ec400"
-magenta = "#b77ee0"
-red = "#ff3334"
-white = "#282a2e"
-yellow = "#f0c674"
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+env:
+  # TERM variable
+  #
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM: xterm-256color
 
-[colors.cursor]
-cursor = "#ffffff"
-text = "#1d1f21"
+window:
+  # Window dimensions (changes require restart)
+  #
+  # Specified in number of columns/lines, not pixels.
+  # If both are `0`, this setting is ignored.
+  #dimensions:
+  #  columns: 0
+  #  lines: 0
+  opacity: 0.86
+  # Window position (changes require restart)
+  #
+  # Specified in number of pixels.
+  # If the position is not set, the window manager will handle the placement.
+  #position:
+  #  x: 0
+  #  y: 0
 
-[colors.normal]
-black = "#1d1f21"
-blue = "#81a2be"
-cyan = "#70c0ba"
-green = "#b5bd68"
-magenta = "#b294bb"
-red = "#cc6666"
-white = "#373b41"
-yellow = "#e6c547"
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 6
+    y: 6
 
-[colors.primary]
-background = "#1d1f21"
-foreground = "#c5c8c6"
+  # Spread additional padding evenly around the terminal content.
+  #dynamic_padding: false
 
-[env]
-TERM = "xterm-256color"
+  # Window decorations
+  #
+  # Values for `decorations`:
+  #     - full: Borders and title bar
+  #     - none: Neither borders nor title bar
+  #
+  # Values for `decorations` (macOS only):
+  #     - transparent: Title bar, transparent background and title bar buttons
+  #     - buttonless: Title bar, transparent background, but no title bar buttons
+  #decorations: full
 
-[font]
-size = 9.0
+  # Startup Mode (changes require restart)
+  #
+  # Values for `startup_mode`:
+  #   - Windowed
+  #   - Maximized
+  #   - Fullscreen
+  #
+  # Values for `startup_mode` (macOS only):
+  #   - SimpleFullscreen
+  #startup_mode: Windowed
 
-[font.bold]
-family = "FreeMono"
-style = "Bold"
+  # Window title
+  title: Alacritty
 
-[font.bold_italic]
-family = "FreeMono"
-style = "Bold Italic"
+  # Window class (Linux/BSD only):
+  class:
+    # Application instance name
+    instance: Alacritty
+    # General application class
+    general: Alacritty
 
-[font.italic]
-family = "FreeMono"
-style = "Italic"
+  # GTK theme variant (Linux/BSD only)
+  #
+  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
+  # Set this to `None` to use the default theme variant.
+  #gtk_theme_variant: None
 
-[font.normal]
-family = "FreeMono"
-style = "Regular"
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 5000
 
-[font.offset]
-x = 0
-y = 1
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  #multiplier: 3
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Control|Shift"
+  # Scroll to the bottom when new text is written to the terminal.
+  #auto_scroll: false
 
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Control|Shift"
+# Spaces per Tab (changes require restart)
+#
+# This setting defines the width of a tab in cells.
+#
+# Some applications, like Emacs, rely on knowing about the width of a tab.
+# To prevent unexpected behavior in these applications, it's also required to
+# change the `it` value in terminfo when altering this setting.
+#tabspaces: 8
 
-[[keyboard.bindings]]
-action = "PasteSelection"
-key = "Insert"
-mods = "Shift"
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    # Font family
+    #
+    # Default:
+    #   - (macOS) Menlo
+    #   - (Linux/BSD) monospace
+    #   - (Windows) Consolas
+    # family: SauceCodePro Nerd Font
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofur Nerd Font
+    # family: TerminessTTF Nerd Font
+    family: ProggyClean Nerd Font
 
-[[keyboard.bindings]]
-action = "ResetFontSize"
-key = "Key0"
-mods = "Control"
+    # The `style` can be specified to pick a specific face.
+    style: Regular
 
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "Equals"
-mods = "Control"
+  # Bold font face
+  bold:
+    # Font family
+    #
+    # If the bold family is not specified, it will fall back to the
+    # value specified for the normal font.
+    # family: SauceCodePro Nerd Font
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofur Nerd Font
+    # family: TerminessTTF Nerd Font
+    family: ProggyClean Nerd Font
 
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "Plus"
-mods = "Control"
+    # The `style` can be specified to pick a specific face.
+    style: Bold
 
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "Minus"
-mods = "Control"
+  # Italic font face
+  italic:
+    # Font family
+    #
+    # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    # family: SauceCodePro Nerd Font Mono
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofuritalic Nerd Font Mono
+    # family: TerminessTTF Nerd Font
+    family: ProggyClean Nerd Font
 
-[[keyboard.bindings]]
-action = "ToggleFullscreen"
-key = "F11"
-mods = "None"
+    # The `style` can be specified to pick a specific face.
+    style: Italic
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "Paste"
-mods = "None"
+  # Bold italic font face
+  bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    # family: SauceCodePro Nerd Font Mono
+    # family: CodeNewRoman Nerd Font
+    # family: RobotoMono Nerd Font
+    # family: Hack
+    # family: JetBrains Mono
+    # family: UbuntuMono Nerd Font
+    # family: Monofuritalic Nerd Font Mono
+    # family: TerminessTTF Nerd Font
+    family: ProggyClean Nerd Font
 
-[[keyboard.bindings]]
-action = "Copy"
-key = "Copy"
-mods = "None"
+    # The `style` can be specified to pick a specific face.
+    style: Bold Italic
 
-[[keyboard.bindings]]
-action = "ClearLogNotice"
-key = "L"
-mods = "Control"
+  # Point size
+  size: 11.0
 
-[[keyboard.bindings]]
-chars = "\f"
-key = "L"
-mods = "Control"
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+  offset:
+    x: 1
+    y: 1
 
-[[keyboard.bindings]]
-action = "ScrollPageUp"
-key = "PageUp"
-mode = "~Alt"
-mods = "None"
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increasing `x` moves the glyph to the right,
+  # increasing `y` moves the glyph upwards.
+  #glyph_offset:
+  #  x: 0
+  #  y: 0
 
-[[keyboard.bindings]]
-action = "ScrollPageDown"
-key = "PageDown"
-mode = "~Alt"
-mods = "None"
+  # Thin stroke font rendering (macOS only)
+  #
+  # Thin strokes are suitable for retina displays, but for non-retina screens
+  # it is recommended to set `use_thin_strokes` to `false`
+  #
+  # macOS >= 10.14.x:
+  #
+  # If the font quality on non-retina display looks bad then set
+  # `use_thin_strokes` to `true` and enable font smoothing by running the
+  # following command:
+  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
+  #
+  # This is a global setting and will require a log out or restart to take
+  # effect.
+  #use_thin_strokes: true
 
-[[keyboard.bindings]]
-action = "ScrollToTop"
-key = "Home"
-mode = "~Alt"
-mods = "Shift"
+# If `true`, bold text is drawn using the bright color variants.
+#draw_bold_text_with_bright_colors: true
 
-[[keyboard.bindings]]
-action = "ScrollToBottom"
-key = "End"
-mode = "~Alt"
-mods = "Shift"
+# Colors (Tomorrow Night Bright)
+#colors:
+  # Default colors
+#  primary:
+#    background: '0x002b36'
+#    foreground: '0x93a1a1'
 
-[window]
-decorations = "full"
-dynamic_padding = false
-opacity = 0.88
-title = "Alacritty"
+  # Colors the cursor will use if `custom_cursor_colors` is true
+#  cursor:
+#    text: '0x002b36'
+#    cursor: '0x93a1a1'
 
-[window.class]
-general = "Alacritty"
-instance = "Alacritty"
+  # Normal colors
+#  normal:
+#    black:   '0x002b36'
+#    red:     '0xdc322f'
+#    green:   '0x859900'
+#    yellow:  '0xb58900'
+#    blue:    '0x268bd2'
+#    magenta: '0x6c71c4'
+#    cyan:    '0x2aa198'
+#    white:   '0x93a1a1'
 
-[window.padding]
-x = 6
-y = 6
+  # Bright colors
+#  bright:
+#    black:   '0x657b83'
+#    red:     '0xdc322f'
+#    green:   '0x859900'
+#    yellow:  '0xb58900'
+#    blue:    '0x268bd2'
+#    magenta: '0x6c71c4'
+#    cyan:    '0x2aa198'
+#    white:   '0xfdf6e3'
+
+#  indexed_colors:
+#    - { index: 16, color: '0xcb4b16' }
+#    - { index: 17, color: '0xd33682' }
+#    - { index: 18, color: '0x073642' }
+#    - { index: 19, color: '0x586e75' }
+#    - { index: 20, color: '0x839496' }
+#    - { index: 21, color: '0xeee8d5' }
+
+# Visual Bell
+#
+# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
+# rung, the terminal background will be set to white and transition back to the
+# default background color. You can control the rate of this transition by
+# setting the `duration` property (represented in milliseconds). You can also
+# configure the transition function by setting the `animation` property.
+#
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+#
+# Specifying a `duration` of `0` will disable the visual bell.
+#visual_bell:
+#  animation: EaseOutExpo
+#  duration: 0
+#  color: '0xffffff'
+
+# Background opacity
+#
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+#window_opacity: 0.0
+#background_opacity: 1.0
 EOF
 
 if [ ! -d ~/.fonts ]; then
