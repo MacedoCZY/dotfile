@@ -30,7 +30,7 @@ chmod +x dotFile.sh
 ```
 ./dotFile.sh
 ```
-  - At de intalattion, some option you need to chose, about the confioguration of powerlevel10k
+  - At the intalattion, some option you need to chose, about the confioguration of powerlevel10k
     - For more instructions acess powerlevel10k repo: ```https://github.com/romkatv/powerlevel10k ```
 
 ###  Observation
