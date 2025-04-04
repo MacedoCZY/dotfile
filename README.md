@@ -21,4 +21,4 @@ chmod +x dotFile.sh
     - For more instructions acess powerlevel10k repo: ```https://github.com/romkatv/powerlevel10k ```
 
 ###  Observation
-Idealy use this sh on a clear installation of debian linux with no interface, or in others linux dist that uses apt package manager.
+Ideally use this sh on a clear installation of debian linux with no interface, or in others linux dist that uses apt package manager.
